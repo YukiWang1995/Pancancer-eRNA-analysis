@@ -1,0 +1,9 @@
+altair==5.2.0
+ipython==8.15.0
+joblib==1.2.0
+lifelines==0.28.0
+matplotlib==3.7.2
+numpy==1.24.3
+pandas==2.0.3
+scipy==1.11.1
+streamlit==1.30.0
