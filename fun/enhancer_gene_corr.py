@@ -15,7 +15,7 @@ from lifelines import CoxPHFitter
 
 
 def enhancer_loc_search(chr_number,statr,end):
-    f1=open('F:/web/rawdata/enhancer.id.out','r')
+    f1=open('../../rawdata/enhancer.id.out','r')
     write='enhancer_id'+'\t'+'chrumber'+'\t'+'start'+'\t'+'end'+'\n'
     enhancer_exist=0
     for line1 in f1:
@@ -40,7 +40,7 @@ def enh_id_loc(name):
     name=name.split('\n')[0]
     if name[0:2]=='eh':
         type_id=0
-        f1=open('F:/web/rawdata/enhancer.id.out','r')
+        f1=open('../../rawdata/enhancer.id.out','r')
         for line1 in f1:
             a=line1.split('\n')[0]
             a=a.split('\t')
@@ -55,7 +55,7 @@ def enh_id_loc(name):
             
     elif name[0:2]=='ch':
         type_id=0
-        f1=open('F:/web/rawdata/enhancer.id.out','r')
+        f1=open('../../rawdata/enhancer.id.out','r')
         for line1 in f1:
             a=line1.split('\n')[0]
             a=a.split('\t')
@@ -72,7 +72,7 @@ def enh_id_loc(name):
         return(write)
 
 def enhancer_gene_distance(gene,enhancer):
-    f1=open('F:/web/rawdata/gene.hg19.position','r')
+    f1=open('../../rawdata/gene.hg19.position','r')
     for line1 in f1:
         a=line1.split('\n')[0]
         a=a.split('\t')
@@ -111,7 +111,7 @@ def enhancer_expression_boxplot(enhancer,cancer_type,tumor_normal):
     dict_box={}
     for mm in cancer_type:
         cancer=mm
-        file1='F:/web/rawdata/enhancers/TCGA_'+str(cancer)+'_FANTOM5_60k_eRNA_v2.tsv'
+        file1='../../rawdata/enhancers/TCGA_'+str(cancer)+'_FANTOM5_60k_eRNA_v2.tsv'
         f1=open(file1,'r')
         list_tumor=[]
         list_normal=[]
@@ -184,8 +184,8 @@ def enhancer_gene_corr(gene,enhancer,cancer_type):
     write=str('gene')+'\t'+str('enhancer')+str('Pearson_correlation')+'\t'+str('P_value')+'\t'+str('cancer')+'\n'
     for mm in cancer_type:
         cancer=mm
-        file1='F:/web/rawdata/Gene/'+str(cancer)
-        file2='F:/web/rawdata/enhancers/TCGA_'+str(cancer)+'_FANTOM5_60k_eRNA_v2.tsv'
+        file1='../../rawdata/Gene/'+str(cancer)
+        file2='../../rawdata/enhancers/TCGA_'+str(cancer)+'_FANTOM5_60k_eRNA_v2.tsv'
         f1=open(file1,'r')
         i=0
         dict1_name={}
@@ -276,7 +276,7 @@ def search(gene_search,enhancer_choose,cancer_list,user_distance):
     user_distance=int(user_distance)*1000
     if enhancer_choose==0:
         write=str('gene')+'\t'+str('enhancer')+str('Pearson_correlation')+'\t'+str('P_value')+'\t'+str('cancer')+'\n'
-        f1=open('F:/web/rawdata/enhancer-gene.txt','r')
+        f1=open('../../rawdata/enhancer-gene.txt','r')
         for line1 in f1:
             a=line1.split('\n')[0]
             a=a.split('\t')
@@ -292,7 +292,7 @@ def search(gene_search,enhancer_choose,cancer_list,user_distance):
     #此处需要重新构建表格
     if enhancer_choose==1:
         write=str('gene')+'\t'+str('enhancer')+str('Pearson_correlation')+'\t'+str('P_value')+'\t'+str('cancer')+'\n'
-        f1=open('F:/web/rawdata/enhancer-gene.txt','r')
+        f1=open('../../rawdata/enhancer-gene.txt','r')
         for line1 in f1:
             a=line1.split('\n')[0]
             a=a.split('\t')
@@ -319,7 +319,7 @@ def survival(enhancer_choose,cancer_list,enhancer_choose_time,survival_group):
         plt.clf()
         cancer=mm
         file_png=str(cancer)+'exam.png'
-        file1='F:/web/rawdata/enhancers/TCGA_'+str(cancer)+'_FANTOM5_60k_eRNA_v2.tsv'
+        file1='../../rawdata/enhancers/TCGA_'+str(cancer)+'_FANTOM5_60k_eRNA_v2.tsv'
         f1=open(file1,'r')
         i=0
         dict1_enahcner={}
@@ -364,7 +364,7 @@ def survival(enhancer_choose,cancer_list,enhancer_choose_time,survival_group):
         y=[]
         E=[]
             
-        file2='F:/web/rawdata/Survival.txt'
+        file2='../../rawdata/Survival.txt'
         f2=open(file2,'r')
         i=0
         for line1 in f2:
@@ -424,7 +424,7 @@ def survival(enhancer_choose,cancer_list,enhancer_choose_time,survival_group):
 
 def cox_dataframe(name_list,type_list,cancer_name):
     if type_list==0:
-        file1='F:/web/rawdata/Gene/'+str(cancer_name)
+        file1='../../rawdata/Gene/'+str(cancer_name)
         f1=open(file1,'r')
         gene_list=[]
         dict1_name={}
@@ -467,7 +467,7 @@ def cox_dataframe(name_list,type_list,cancer_name):
             enhancer_true=enhancer_true[0]+':'+str(enhancer_true[1])+'-'+str(enhancer_true[2])
             enhancer_name_list.append(enhancer_true)
         
-        file1='F:/web/rawdata/enhancers/TCGA_'+str(cancer_name)+'_FANTOM5_60k_eRNA_v2.tsv'
+        file1='../../rawdata/enhancers/TCGA_'+str(cancer_name)+'_FANTOM5_60k_eRNA_v2.tsv'
         f1=open(file1,'r')
         i=0
         gene_list=[]
@@ -507,7 +507,7 @@ def cox_dataframe(name_list,type_list,cancer_name):
 
     
     dict3_cox={}
-    file2='F:/web/rawdata/Survival.txt'
+    file2='../../rawdata/Survival.txt'
     f2=open(file2,'r')
     i=0
     for line1 in f2:
@@ -588,68 +588,3 @@ def lasso_cox(txt,enhancer_choose,enhancer_choose_pre,option_cancer):
         write=write+'\t'+file_enhancer_png
         
     return(write)
-
-        
-
-
-
-
-
-'''
-cancer_type=['ACC','BRCA']
-aaa=(enhancer_gene_corr('FGFR1OP2','eh08657',cancer_type))  
-aaa=aaa.split('\n')
-
-i=0
-corr_list=[]
-p_list=[]
-cancer_list=[]
-for line1 in aaa:
-    
-    i=i+1
-    if i >1:
-        a=line1.split('\n')[0]
-
-        a=a.split('\t')
-        if len(a)>2:
-            corr_list.append(str(a[0]))
-            p_list.append(str(a[1]))
-            cancer_list.append(str(a[2]))
-            '''
-  
-'''
-cancer_list=['ACC','BRCA']     
-gene_search='SDF4'  
-enhancer_choose=0
-user_distance='100'
-print(search(gene_search,enhancer_choose,cancer_list,user_distance))
-'''
-'''
-enhancer_choose='eh08657'
-cancer_list=['ACC','BRCA']
-enhancer_choose_time=1
-survival_group=50
-a=(survival(enhancer_choose,cancer_list,enhancer_choose_time,survival_group))
-a=a.split('\n')
-for mm in a:
-    if mm !='':
-        print(mm)
-'''
-'''
-cancer_type=['ACC','BRCA']
-tumor_normal=1
-print(enhancer_expression_boxplot('eh08657',cancer_type,tumor_normal))
-'''
-'''
-txt=str('HES4,KLHL17')
-enhancer_choose=0
-enhancer_choose_pre=0
-option_cancer='ACC'
-print(lasso_cox(txt,enhancer_choose,enhancer_choose_pre,option_cancer))
-'''
-'''
-name_list=['eh08657','eh08658']
-
-print(cox_dataframe(name_list,1,'ACC'))
-
-'''
