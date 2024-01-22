@@ -40,7 +40,7 @@ def enh_id_loc(name):
     name=name.split('\n')[0]
     if name[0:2]=='eh':
         type_id=0
-        f1=open('../../rawdata/enhancer.id.out','r')
+        f1=open('./rawdata/enhancer.id.out','r')
         for line1 in f1:
             a=line1.split('\n')[0]
             a=a.split('\t')
@@ -55,7 +55,7 @@ def enh_id_loc(name):
             
     elif name[0:2]=='ch':
         type_id=0
-        f1=open('../../rawdata/enhancer.id.out','r')
+        f1=open('./rawdata/enhancer.id.out','r')
         for line1 in f1:
             a=line1.split('\n')[0]
             a=a.split('\t')
@@ -72,7 +72,7 @@ def enh_id_loc(name):
         return(write)
 
 def enhancer_gene_distance(gene,enhancer):
-    f1=open('../../rawdata/gene.hg19.position','r')
+    f1=open('./rawdata/gene.hg19.position','r')
     for line1 in f1:
         a=line1.split('\n')[0]
         a=a.split('\t')
@@ -111,7 +111,7 @@ def enhancer_expression_boxplot(enhancer,cancer_type,tumor_normal):
     dict_box={}
     for mm in cancer_type:
         cancer=mm
-        file1='../../rawdata/enhancers/TCGA_'+str(cancer)+'_FANTOM5_60k_eRNA_v2.tsv'
+        file1='./rawdata/enhancers/TCGA_'+str(cancer)+'_FANTOM5_60k_eRNA_v2.tsv'
         f1=open(file1,'r')
         list_tumor=[]
         list_normal=[]
@@ -184,8 +184,8 @@ def enhancer_gene_corr(gene,enhancer,cancer_type):
     write=str('gene')+'\t'+str('enhancer')+str('Pearson_correlation')+'\t'+str('P_value')+'\t'+str('cancer')+'\n'
     for mm in cancer_type:
         cancer=mm
-        file1='../../rawdata/Gene/'+str(cancer)
-        file2='../../rawdata/enhancers/TCGA_'+str(cancer)+'_FANTOM5_60k_eRNA_v2.tsv'
+        file1='./rawdata/Gene/'+str(cancer)
+        file2='./rawdata/enhancers/TCGA_'+str(cancer)+'_FANTOM5_60k_eRNA_v2.tsv'
         f1=open(file1,'r')
         i=0
         dict1_name={}
@@ -292,7 +292,7 @@ def search(gene_search,enhancer_choose,cancer_list,user_distance):
     #此处需要重新构建表格
     if enhancer_choose==1:
         write=str('gene')+'\t'+str('enhancer')+str('Pearson_correlation')+'\t'+str('P_value')+'\t'+str('cancer')+'\n'
-        f1=open('../../rawdata/enhancer-gene.txt','r')
+        f1=open('./rawdata/enhancer-gene.txt','r')
         for line1 in f1:
             a=line1.split('\n')[0]
             a=a.split('\t')
@@ -319,7 +319,7 @@ def survival(enhancer_choose,cancer_list,enhancer_choose_time,survival_group):
         plt.clf()
         cancer=mm
         file_png=str(cancer)+'exam.png'
-        file1='../../rawdata/enhancers/TCGA_'+str(cancer)+'_FANTOM5_60k_eRNA_v2.tsv'
+        file1='./rawdata/enhancers/TCGA_'+str(cancer)+'_FANTOM5_60k_eRNA_v2.tsv'
         f1=open(file1,'r')
         i=0
         dict1_enahcner={}
@@ -364,7 +364,7 @@ def survival(enhancer_choose,cancer_list,enhancer_choose_time,survival_group):
         y=[]
         E=[]
             
-        file2='../../rawdata/Survival.txt'
+        file2='./rawdata/Survival.txt'
         f2=open(file2,'r')
         i=0
         for line1 in f2:
@@ -424,7 +424,7 @@ def survival(enhancer_choose,cancer_list,enhancer_choose_time,survival_group):
 
 def cox_dataframe(name_list,type_list,cancer_name):
     if type_list==0:
-        file1='../../rawdata/Gene/'+str(cancer_name)
+        file1='./rawdata/Gene/'+str(cancer_name)
         f1=open(file1,'r')
         gene_list=[]
         dict1_name={}
@@ -467,7 +467,7 @@ def cox_dataframe(name_list,type_list,cancer_name):
             enhancer_true=enhancer_true[0]+':'+str(enhancer_true[1])+'-'+str(enhancer_true[2])
             enhancer_name_list.append(enhancer_true)
         
-        file1='../../rawdata/enhancers/TCGA_'+str(cancer_name)+'_FANTOM5_60k_eRNA_v2.tsv'
+        file1='./rawdata/enhancers/TCGA_'+str(cancer_name)+'_FANTOM5_60k_eRNA_v2.tsv'
         f1=open(file1,'r')
         i=0
         gene_list=[]
@@ -507,7 +507,7 @@ def cox_dataframe(name_list,type_list,cancer_name):
 
     
     dict3_cox={}
-    file2='../../rawdata/Survival.txt'
+    file2='./rawdata/Survival.txt'
     f2=open(file2,'r')
     i=0
     for line1 in f2:
