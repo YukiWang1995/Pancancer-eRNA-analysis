@@ -15,7 +15,7 @@ from lifelines import CoxPHFitter
 
 
 def enhancer_loc_search(chr_number,statr,end):
-    f1=open('../../rawdata/enhancer.id.out','r')
+    f1=open('./rawdata/enhancer.id.out','r')
     write='enhancer_id'+'\t'+'chrumber'+'\t'+'start'+'\t'+'end'+'\n'
     enhancer_exist=0
     for line1 in f1:
